@@ -11,7 +11,7 @@ const App: React.FC = () => {
         <Header />
       </header>
 
-      <Container py="7" maxW="container.sm">
+      <Container py="10" maxW="80%">
         <Routes />
       </Container>
 

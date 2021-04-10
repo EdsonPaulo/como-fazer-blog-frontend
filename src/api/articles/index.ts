@@ -9,4 +9,4 @@ export const fetchArticles: TFetchArticles = ({ query = {} }) =>
   });
 
 export const fetchArticleBySlug: TFetchArticleBySlug = ({ slug }) =>
-  api.get(`/${Shared.Articles}/${slug}`);
+  api.get(`/${Shared.Articles}/${Shared.Slug}/${slug}`);

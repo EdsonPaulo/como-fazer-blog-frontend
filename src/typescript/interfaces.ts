@@ -3,7 +3,7 @@ import { ArticleCategories, Shared } from "./enums";
 export interface IArticle {
   [Shared.Title]: string;
   [Shared.Body]: string;
-  [Shared.Image]?: string;
+  [Shared.Image]: string;
   [Shared.Slug]: string;
   [Shared.Categories]: ArticleCategories[];
   [Shared.Comments]: [

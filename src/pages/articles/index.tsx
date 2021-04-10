@@ -1,5 +1,11 @@
-import { Stack, Skeleton, createStandaloneToast } from "@chakra-ui/react";
+import {
+  Stack,
+  Skeleton,
+  createStandaloneToast,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { ArticleCard } from "src/components";
 
 import { IArticle } from "src/typescript/interfaces";
 
@@ -44,7 +50,11 @@ const Articles: React.FC = () => {
           </Stack>
         </>
       ) : (
-        <p>{JSON.stringify(articles)}</p>
+        <SimpleGrid columns={3} spacing={5}>
+          {articles.map((article) => (
+            <ArticleCard article={article} />
+          ))}
+        </SimpleGrid>
       )}
     </div>
   );
