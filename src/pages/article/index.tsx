@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { createStandaloneToast } from "@chakra-ui/react";
+import { Box, Text, createStandaloneToast } from "@chakra-ui/react";
 
 import { IArticle } from "../../typescript/interfaces";
 import { fetchArticleBySlug } from "../../api";
@@ -35,13 +35,9 @@ const Article: React.FC = () => {
   }, [slug]);
 
   return (
-    <div>
-      {loading && !article ? (
-        <h1>Carregando...</h1>
-      ) : (
-        <p>{JSON.stringify(article)}</p>
-      )}
-    </div>
+    <Box>
+      {loading ? <h1>Carregando...</h1> : <Text>{article?.title}</Text>}
+    </Box>
   );
 };
 
