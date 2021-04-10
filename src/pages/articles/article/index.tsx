@@ -24,8 +24,8 @@ const Article: React.FC = () => {
 
   useEffect(() => {
     getArticle();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   return (
     <div>

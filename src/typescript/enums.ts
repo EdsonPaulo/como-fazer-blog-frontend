@@ -55,3 +55,7 @@ export enum APIKeys {
   Prev = "prev",
   TotalPages = "totalPages",
 }
+
+export enum EnvKeys {
+  API_URL = "REACT_APP_API_URL",
+}

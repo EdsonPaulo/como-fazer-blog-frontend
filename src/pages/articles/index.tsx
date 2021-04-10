@@ -1,12 +1,14 @@
+import { Stack, Skeleton, createStandaloneToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 import { IArticle } from "src/typescript/interfaces";
 
 import { fetchArticles } from "../../api";
 
-const Article: React.FC = () => {
+const Articles: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState<IArticle[]>([]);
+  const toast = createStandaloneToast();
 
   const getArticles = async () => {
     setLoading(true);
@@ -16,6 +18,11 @@ const Article: React.FC = () => {
       } = await fetchArticles({});
       if (data) setArticles(data);
     } catch (error) {
+      toast({
+        title: error?.message,
+        status: "error",
+        duration: 9000,
+      });
     } finally {
       setLoading(false);
     }
@@ -28,9 +35,19 @@ const Article: React.FC = () => {
 
   return (
     <div>
-      {loading ? <h1>Carregando...</h1> : <p>{JSON.stringify(articles)}</p>}
+      {loading ? (
+        <>
+          <Stack>
+            <Skeleton height="50px" />
+            <Skeleton height="50px" />
+            <Skeleton height="50px" />
+          </Stack>
+        </>
+      ) : (
+        <p>{JSON.stringify(articles)}</p>
+      )}
     </div>
   );
 };
 
-export default Article;
+export default Articles;
