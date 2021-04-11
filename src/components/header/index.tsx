@@ -1,105 +1,118 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
+import { Button, Flex, IconButton, Link, Tooltip } from "@chakra-ui/react";
 import React from "react";
+// import { MdInfo, MdEmail, MdHome, MdSettings } from "react-icons/md";
+import { GrFacebookOption, GrInstagram, GrFacebook } from "react-icons/gr";
 import {
-  FiFacebook,
-  FiInstagram,
-  FiHome,
-  FiSettings,
-  FiPhone,
-  FiAlertCircle,
-} from "react-icons/fi";
-import { Link as RouterLink } from "react-router-dom";
+  FaFacebookSquare,
+  FaInstagram,
+  FaInstagramSquare,
+} from "react-icons/fa";
+
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import ComoFazerLogo from "../../assets/svg/como-fazer-logo";
+import ROUTES from "src/constants/routes";
 
 const Header: React.FC = () => {
+  const { pathname } = useLocation();
+
+  const getColorNavigationStateBased = (route: string) =>
+    route === pathname ? "indigo.100" : "transparent";
+
   return (
     <nav>
       <Flex
-        px={6}
+        px={10}
         py={4}
         bg="white"
         shadow="base"
         alignItems="center"
         justifyContent="space-between"
-        color="blackAlpha.800"
+        color="blackAlpha.900"
       >
-        <Box>
-          <ComoFazerLogo width={200} />
-        </Box>
+        <Link as={RouterLink} to={ROUTES.Home}>
+          <ComoFazerLogo width={180} />
+        </Link>
 
         <Flex>
-          <Link
-            to="/"
-            d="flex"
-            as={RouterLink}
-            alignItems="center"
-            className="nav-item"
-          >
-            <FiHome size={18} />
-            <Text ml="1" fontSize="xl">
+          <Link as={RouterLink} to={ROUTES.Home}>
+            <Button
+              size="lg"
+              variant="ghost"
+              letterSpacing="wider"
+              //  leftIcon={<MdHome size={22} />}
+              background={getColorNavigationStateBased(ROUTES.Home)}
+            >
               Início
-            </Text>
+            </Button>
           </Link>
 
-          <Link
-            mx="6"
-            d="flex"
-            as={RouterLink}
-            to="/about"
-            alignItems="center"
-            className="nav-item mx-6"
-          >
-            <FiSettings size={18} />
-            <Text ml="1" fontSize="xl">
+          <Link mx="4" as={RouterLink} to={ROUTES.Services}>
+            <Button
+              size="lg"
+              variant="ghost"
+              letterSpacing="wider"
+              //  leftIcon={<MdSettings size={22} />}
+              background={getColorNavigationStateBased(ROUTES.Services)}
+            >
               Serviços
-            </Text>
+            </Button>
           </Link>
 
-          <Link
-            d="flex"
-            as={RouterLink}
-            alignItems="center"
-            to="/blog/hello-world"
-            className="nav-item"
-          >
-            <FiPhone size={18} />
-            <Text ml="1" fontSize="xl">
+          <Link as={RouterLink} to={ROUTES.Contact}>
+            <Button
+              size="lg"
+              variant="ghost"
+              letterSpacing="wider"
+              //  leftIcon={<MdEmail size={22} />}
+              background={getColorNavigationStateBased(ROUTES.Contact)}
+            >
               Contato
-            </Text>
+            </Button>
           </Link>
 
-          <Link
-            ml="6"
-            d="flex"
-            as={RouterLink}
-            alignItems="center"
-            to="/blog/hello-world"
-          >
-            <FiAlertCircle size={18} />
-            <Text ml="1" fontSize="xl">
+          <Link ml="4" as={RouterLink} to={ROUTES.About}>
+            <Button
+              size="lg"
+              variant="ghost"
+              letterSpacing="wider"
+              //  leftIcon={<MdInfo size={22} />}
+              background={getColorNavigationStateBased(ROUTES.About)}
+            >
               Sobre
-            </Text>
+            </Button>
           </Link>
         </Flex>
 
         <Flex>
           <Link
-            mr="4"
+            mr="1"
             target="_blank"
+            color="facebook.600"
             rel="noopener noreferrer"
-            className="mr-2 nav-item"
             href="https://facebook.com/comofazer2021"
           >
-            <FiFacebook size={20} />
+            <Tooltip label="Facebook da Como Fazer">
+              <IconButton
+                aria-label="Facebook da Como Fazer?"
+                icon={<FaFacebookSquare size={30} />}
+                variant="ghost"
+              />
+            </Tooltip>
           </Link>
           <Link
             target="_blank"
+            color="red.600"
             rel="noopener noreferrer"
-            className="nav-item"
-            href="https://instagram.com/como-fazer-2021"
+            href="https://instagram.com/como-fazer-2521"
           >
-            <FiInstagram size={20} />
+            <Tooltip label="Instagram da Como Fazer">
+              <IconButton
+                aria-label="Instagram da Como Fazer"
+                icon={<FaInstagram size={30} />}
+                variant="ghost"
+              />
+            </Tooltip>
           </Link>
         </Flex>
       </Flex>

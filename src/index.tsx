@@ -1,12 +1,14 @@
+import { ChakraProvider } from "@chakra-ui/react";
+import "@fontsource/playfair-display/500.css";
+import "@fontsource/cairo";
 import React from "react";
 import ReactDOM from "react-dom";
-import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
 
-import "./styles/globals.css";
-import reportWebVitals from "./reportWebVitals";
 import CustomTheme from "./constants/custom.theme";
 import { App } from "./pages";
-import { BrowserRouter } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
+import "./styles/globals.scss";
 
 ReactDOM.render(
   <React.StrictMode>
