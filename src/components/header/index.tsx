@@ -1,17 +1,12 @@
 import { Button, Flex, IconButton, Link, Tooltip } from "@chakra-ui/react";
 import React from "react";
 // import { MdInfo, MdEmail, MdHome, MdSettings } from "react-icons/md";
-import { GrFacebookOption, GrInstagram, GrFacebook } from "react-icons/gr";
-import {
-  FaFacebookSquare,
-  FaInstagram,
-  FaInstagramSquare,
-} from "react-icons/fa";
-
+// import { GrFacebookOption, GrInstagram, GrFacebook } from "react-icons/gr";
+import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
 import ComoFazerLogo from "../../assets/svg/como-fazer-logo";
-import ROUTES from "src/constants/routes";
+import ROUTES from "../../constants/routes";
 
 const Header: React.FC = () => {
   const { pathname } = useLocation();
