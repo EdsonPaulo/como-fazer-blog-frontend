@@ -14,9 +14,7 @@ const Article: React.FC = () => {
   const getArticle = async () => {
     setLoading(true);
     try {
-      const {
-        data: { data },
-      } = await fetchArticleBySlug({ slug });
+      const { data } = await fetchArticleBySlug({ slug });
       setArticle(data);
     } catch (error) {
       toast({

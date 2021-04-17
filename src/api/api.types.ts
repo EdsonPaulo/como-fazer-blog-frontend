@@ -15,6 +15,6 @@ export interface APIResponseForMultiData<T> extends CommonAPIResponse {
   data: T[];
 }
 
-export interface APIResponseForSingleData<T> extends CommonAPIResponse {
-  data: T | null;
+export interface APIResponseForSingleData<T> {
+  data: T;
 }

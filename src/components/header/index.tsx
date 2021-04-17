@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const { pathname } = useLocation();
 
   const getColorNavigationStateBased = (route: string) =>
-    route === pathname ? "indigo.100" : "transparent";
+    route === pathname ? "gray.100" : "transparent";
 
   return (
     <nav>
