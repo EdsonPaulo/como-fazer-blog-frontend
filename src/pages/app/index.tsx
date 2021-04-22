@@ -1,4 +1,4 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React from "react";
 
 import { Footer, Header } from "../../components";
@@ -11,9 +11,9 @@ const App: React.FC = () => {
         <Header />
       </header>
 
-      <Container py="10" maxW="80%">
+      <Box maxW="100%">
         <Routes />
-      </Container>
+      </Box>
 
       <footer>
         <Footer />

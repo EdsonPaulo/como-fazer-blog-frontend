@@ -4,14 +4,14 @@ export enum Roles {
 }
 
 export enum ArticleCategories {
-  SemCategoria = "sem categoria",
+  Tudo = "tudo",
   Saude = "saúde",
   Financas = "finanças",
+  Tecnologia = "tecnologia",
   Entretenimento = "entretenimento",
   Internet = "internet",
   Educacao = "educação",
   Social = "social",
-  Tecnologia = "tecnologia",
   Comunicacao = "comunicação",
   Informatica = "informática",
   Relacionamento = "relacionamento",
@@ -23,6 +23,7 @@ export enum ArticleCategories {
   Culinaria = "culinária",
   Estilo = "estilo",
   Artesanato = "artesanato",
+  SemCategoria = "sem categoria",
   DesenvolvimentoPessoal = "desenvolvimento pessoal",
 }
 

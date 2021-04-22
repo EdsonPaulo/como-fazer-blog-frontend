@@ -123,7 +123,6 @@ const NavigationBar: FC<NavigationBarProps> = ({ navigationDirection }) => {
 const SocialButtons: FC = () => (
   <Flex alignItems="center">
     <Link
-      mr="1"
       target="_blank"
       color="blackAlpha.800"
       rel="noopener noreferrer"
@@ -131,7 +130,7 @@ const SocialButtons: FC = () => (
     >
       <IconButton
         aria-label="Facebook da Como Fazer?"
-        icon={<IoLogoFacebook size={25} />}
+        icon={<IoLogoFacebook size={20} />}
         variant="ghost"
       />
     </Link>
@@ -173,13 +172,13 @@ const DrawerMenu: FC = () => {
       <IconButton
         onClick={onOpen}
         aria-label="abrir menu"
-        icon={<IoMenuSharp size={30} />}
+        icon={<IoMenuSharp size={25} />}
         variant="ghost"
       />
       <IconButton
         onClick={onOpen}
         aria-label="abrir menu"
-        icon={<IoSearch size={28} />}
+        icon={<IoSearch size={25} />}
         variant="ghost"
       />
       <Drawer size="md" placement={placement} onClose={onClose} isOpen={isOpen}>
@@ -228,14 +227,14 @@ const Header: FC = () => {
   return (
     <nav>
       <Flex
-        px={{ base: 5, md: 10 }}
-        py={5}
+        px={{ base: "6", md: "12" }}
+        py="6"
         bg="white"
-        shadow="base"
+        shadow="lg"
         flexDirection="column"
         color="blackAlpha.900"
       >
-        <Flex mb={[0, 5]} alignItems="center" justifyContent="space-between">
+        <Flex mb={[0, 6]} alignItems="center" justifyContent="space-between">
           <DrawerMenu />
 
           <Link as={RouterLink} to={ROUTES.Home}>
