@@ -1,11 +1,13 @@
 import { extendTheme } from "@chakra-ui/react";
 
+import COLORS from "./colors";
+
 const CustomTheme = extendTheme({
   colors: {
     brand: {
-      primary: "#341F97",
-      primaryDark: "#35209B",
-      accent: "#EA7F02",
+      primary: COLORS.primary,
+      primaryDark: COLORS.primaryDark,
+      accent: COLORS.accent,
     },
   },
   fonts: {

@@ -1,3 +1,9 @@
+
+/* Colors var */
+$color-primary: #341F97;
+$color-primaryDark: #35209B;
+$color-accent: #EA7F02;
+
 * {
   box-sizing: border-box;
   outline: none !important;
@@ -20,6 +26,15 @@ code {
 Link, a {
   color: inherit;
   text-decoration: none !important;
+
+  &:hover {
+    color: $color-accent !important;
+  }
+
+  &:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
 }
 
 Button,
