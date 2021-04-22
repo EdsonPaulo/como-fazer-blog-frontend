@@ -5,15 +5,12 @@ import {
   Grid,
   GridItem,
   Heading,
-  Spacer,
   Text,
 } from "@chakra-ui/layout";
 import React, { FC, useState } from "react";
 import { ArticleCategories } from "src/typescript/enums";
 
 import Articles from "../articles";
-
-import "./home.module.css";
 
 const Categories: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState(
