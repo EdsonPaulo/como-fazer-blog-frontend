@@ -1,19 +1,22 @@
 import { ArticleCategories, Shared } from "./enums";
 
+export interface IComment {
+  [Shared.Name]: string;
+  [Shared.Email]: string;
+  [Shared.Body]: string;
+  [Shared.CreatedAt]: Date;
+}
+
 export interface IArticle {
+  [Shared.MongoId]: string;
   [Shared.Title]: string;
   [Shared.Body]: string;
   [Shared.Image]: string;
   [Shared.Slug]: string;
-  [Shared.Categories]: ArticleCategories[];
-  [Shared.Comments]: [
-    {
-      [Shared.Username]: string;
-      [Shared.Email]: string;
-      [Shared.Body]: string;
-      [Shared.CreatedAt]: Date;
-    }
-  ];
+  [Shared.Category]: ArticleCategories;
+  [Shared.Comments]: IComment[];
+  [Shared.Tags]: string[];
+  [Shared.Likes]: number;
   [Shared.CreatedAt]: Date;
   [Shared.UpdatedAt]: Date;
 }

@@ -4,6 +4,7 @@ import "@fontsource/cairo";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import "moment/locale/pt-br";
 
 import CustomTheme from "./constants/custom.theme";
 import { App } from "./pages";
