@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { APIKeys, Shared } from "src/typescript/enums";
 
-import { IArticle } from "../../typescript/interfaces";
+import { IArticle, IComment } from "../../typescript/interfaces";
 import { APIResponseForMultiData } from "../api.types";
 
 export type TFetchArticles = (payload: {
@@ -11,3 +11,12 @@ export type TFetchArticles = (payload: {
 export type TFetchArticleBySlug = (payload: {
   [Shared.Slug]: string;
 }) => Promise<AxiosResponse<IArticle>>;
+
+export type TLikeArticle = (payload: {
+  [Shared.Slug]: string;
+}) => Promise<AxiosResponse>;
+
+export type TCommentArticle = (payload: {
+  [Shared.Slug]: string;
+  [Shared.Comment]: IComment;
+}) => Promise<AxiosResponse>;
