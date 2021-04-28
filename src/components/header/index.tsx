@@ -1,5 +1,4 @@
 import {
-  Button,
   Box,
   Flex,
   IconButton,
@@ -232,7 +231,7 @@ const Header: FC = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <nav >
+    <nav>
       <Flex
         px={{ base: "6", md: "12", lg: "24" }}
         py="6"
@@ -241,7 +240,7 @@ const Header: FC = () => {
         position="sticky"
         flexDirection="column"
         color="blackAlpha.900"
-              >
+      >
         <Flex mb={[0, 6]} alignItems="center" justifyContent="space-between">
           <DrawerMenu />
 
