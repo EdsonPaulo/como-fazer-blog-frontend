@@ -6,7 +6,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { commentArticle } from "src/api";
+import { patchCommentArticle } from "src/api";
 import Pagination from "src/components/pagination";
 
 import { IComment } from "../../../typescript/interfaces";
@@ -28,7 +28,7 @@ const Comments: FC<CommentsProps> = ({ comments = [], slug }) => {
     setCommentList((prevState) => [...prevState, data]);
     try {
       setIsSubmittingComment(true);
-      await commentArticle({ slug, comment: data });
+      await patchCommentArticle({ slug, comment: data });
     } catch (error) {
       setCommentList([...prevCommentList]);
       toast({

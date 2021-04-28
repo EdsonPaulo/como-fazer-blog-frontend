@@ -10,21 +10,30 @@ import {
   ServicesPage,
 } from "../pages";
 import ROUTES from "../constants/routes";
+import { AdminDashboard } from "src/pages/admin";
 
-const Routes = () => {
-  return (
-    <Switch>
-      <Route exact path={ROUTES.Home} component={HomePage} />
-      <Route path={ROUTES.About} component={AboutPage} />
-      <Route path={ROUTES.Contact} component={ContactPage} />
-      <Route path={ROUTES.Services} component={ServicesPage} />
+export const Routes = () => (
+  <Switch>
+    <Route exact path={ROUTES.Home} component={HomePage} />
+    <Route path={ROUTES.About} component={AboutPage} />
+    <Route path={ROUTES.Contact} component={ContactPage} />
+    <Route path={ROUTES.Services} component={ServicesPage} />
 
-      <Route path={ROUTES.Articles} component={ArticlesPage} />
-      <Route path={ROUTES.Article} component={ArticlePage} />
+    <Route path={ROUTES.Articles} component={ArticlesPage} />
+    <Route path={ROUTES.Article} component={ArticlePage} />
 
-      <Route path={ROUTES.NotFound} />
-    </Switch>
-  );
-};
+    <Route path={ROUTES.NotFound} />
+  </Switch>
+);
 
-export default Routes;
+export const AdminRoutes = () => (
+  <Switch>
+    <Route path={ROUTES.Admin.Root} component={AdminDashboard} />
+    <Route path={ROUTES.Admin.Dashboard} component={AdminDashboard} />
+    <Route path={ROUTES.Admin.CreateArticle} component={AboutPage} />
+    <Route path={ROUTES.Admin.EditArticle} component={AboutPage} />
+    <Route path={ROUTES.Admin.ShowArticle} component={AboutPage} />
+
+    <Route path={ROUTES.NotFound} />
+  </Switch>
+);

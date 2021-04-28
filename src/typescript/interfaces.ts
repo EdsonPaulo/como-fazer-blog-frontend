@@ -7,16 +7,21 @@ export interface IComment {
   [Shared.CreatedAt]: Date;
 }
 
-export interface IArticle {
-  [Shared.MongoId]: string;
+export interface ICommonArticle {
   [Shared.Title]: string;
   [Shared.Body]: string;
   [Shared.Image]: string;
-  [Shared.Slug]: string;
   [Shared.Category]: ArticleCategories;
-  [Shared.Comments]: IComment[];
   [Shared.Tags]: string[];
+}
+
+export interface IArticle extends ICommonArticle {
+  [Shared.MongoId]: string;
+  [Shared.Slug]: string;
+  [Shared.Comments]: IComment[];
   [Shared.Views]: number;
   [Shared.CreatedAt]: Date;
   [Shared.UpdatedAt]: Date;
 }
+
+export interface IArticleWritable extends ICommonArticle {}

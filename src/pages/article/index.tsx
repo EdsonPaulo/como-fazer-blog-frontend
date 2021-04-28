@@ -1,8 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Avatar,
   Badge,
   Box,
+  Center,
   CircularProgress,
   Container,
   createStandaloneToast,
@@ -17,7 +17,7 @@ import moment from "moment";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { BiCalendar, BiMessageAltDetail } from "react-icons/bi";
 import { FiEye } from "react-icons/fi";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { fetchArticleBySlug, viewArticle } from "../../api";
 import { IArticle } from "../../typescript/interfaces";
@@ -28,17 +28,22 @@ import ShareOptions from "./share-options";
 import ROUTES from "src/constants/routes";
 
 const Article: FC = () => {
+  const { state } = useLocation<{ article: IArticle }>();
   const { slug } = useParams<{ slug: string }>();
   const [loading, setLoading] = useState(false);
   const [loadingView, setLoadingView] = useState(false);
-  const [article, setArticle] = useState<IArticle | null>(null);
+  const [article, setArticle] = useState<IArticle | null>(
+    state?.article || null
+  );
   const toast = createStandaloneToast();
 
   const getArticle = useCallback(async () => {
     if (loading) return;
     setLoading(true);
     try {
-      const { data } = await fetchArticleBySlug({ slug });
+      const { data } = await fetchArticleBySlug({
+        slug: state?.article?.slug || slug,
+      });
       setArticle(data);
     } catch (error) {
       toast({
@@ -49,40 +54,41 @@ const Article: FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [loading, slug, toast]);
+  }, [loading, slug, state?.article?.slug, toast]);
 
   const handleViewArticle = useCallback(async () => {
     if (loadingView) return;
     setLoadingView(true);
     try {
-      await viewArticle({ slug });
+      await viewArticle({
+        slug: article?.slug || slug,
+      });
     } catch (error) {
     } finally {
       setLoadingView(false);
     }
-  }, [loadingView, slug]);
+  }, [article, loadingView, slug]);
 
   useEffect(() => {
-    if (article) handleViewArticle();
-  }, [article]);
+    if (article?.slug) handleViewArticle();
+  }, [article, handleViewArticle]);
 
   useEffect(() => {
     getArticle();
-  }, [slug]);
+  }, [article, getArticle]);
 
   return (
-    <Container py="10" maxWidth="container.lg" background="whatsapp">
+    <>
       {loading && !article ? (
-        <Box
+        <Center
           minH="100%"
           minW="100%"
           justifyContent="center"
           alignItems="center"
           alignContent="center"
         >
-          carregando
           <CircularProgress isIndeterminate color="green" />
-        </Box>
+        </Center>
       ) : (
         article && (
           <Box>
@@ -90,7 +96,7 @@ const Article: FC = () => {
               <PageBreadcumb
                 paths={[
                   { label: "artigos", route: ROUTES.Articles },
-                  { label: slug, current: true },
+                  { label: article.slug, current: true },
                 ]}
               />
             </Box>
@@ -216,7 +222,7 @@ const Article: FC = () => {
           </Box>
         )
       )}
-    </Container>
+    </>
   );
 };
 
