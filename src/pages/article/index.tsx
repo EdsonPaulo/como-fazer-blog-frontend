@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Avatar,
   Badge,
@@ -28,7 +29,7 @@ import ROUTES from "src/constants/routes";
 
 const Article: FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [loadingView, setLoadingView] = useState(false);
   const [article, setArticle] = useState<IArticle | null>(null);
   const toast = createStandaloneToast();
@@ -63,11 +64,11 @@ const Article: FC = () => {
 
   useEffect(() => {
     if (article) handleViewArticle();
-  }, [article, handleViewArticle]);
+  }, [article]);
 
   useEffect(() => {
     getArticle();
-  }, [getArticle, slug]);
+  }, [slug]);
 
   return (
     <Container py="10" maxWidth="container.lg" background="whatsapp">
@@ -79,6 +80,7 @@ const Article: FC = () => {
           alignItems="center"
           alignContent="center"
         >
+          carregando
           <CircularProgress isIndeterminate color="green" />
         </Box>
       ) : (
@@ -87,7 +89,7 @@ const Article: FC = () => {
             <Box justifyContent="center" mb="6">
               <PageBreadcumb
                 paths={[
-                  { label: "articos", route: ROUTES.Articles },
+                  { label: "artigos", route: ROUTES.Articles },
                   { label: slug, current: true },
                 ]}
               />
