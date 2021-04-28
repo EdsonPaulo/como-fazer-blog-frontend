@@ -1,16 +1,11 @@
 import { Button } from "@chakra-ui/button";
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Text,
-} from "@chakra-ui/layout";
+import { Box, Flex, Grid, GridItem, Heading } from "@chakra-ui/layout";
 import React, { FC, useState } from "react";
-import { ArticleCategories } from "src/typescript/enums";
 
-import Articles from "../articles";
+import { ArticleCategories } from "../../typescript/enums";
+
+import ArticlesSlider from "./content/articles-slider";
+import HeroSlideShow from "./content/hero-slide-show";
 
 const Categories: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState(
@@ -18,87 +13,65 @@ const Categories: FC = () => {
   );
   const categories = Object.values(ArticleCategories);
   return (
-    <Flex alignItems="center" flexWrap="wrap">
-      {categories.map((category, index) => (
-        <Button
-          m="2"
-          minW="100"
-          size="sm"
-          color="gray.700"
-          borderRadius="lg"
-          textTransform="uppercase"
-          onClick={() => setSelectedCategory(category)}
-          background={selectedCategory === category ? "blue.100" : "gray.200"}
-        >
-          {category}
-        </Button>
-      ))}
-    </Flex>
+    <Box>
+      <Heading as="h4" mb="3" textAlign="center">
+        Categorias
+      </Heading>
+
+      <Flex alignItems="center" justify="center" flexWrap="wrap">
+        {categories.map((category, index) => (
+          <Button
+            key={index}
+            m="1"
+            minW="70"
+            size="sm"
+            color="gray.700"
+            borderRadius="lg"
+            textTransform="capitalize"
+            onClick={() => setSelectedCategory(category)}
+            background={selectedCategory === category ? "blue.200" : "gray.200"}
+          >
+            {category}
+          </Button>
+        ))}
+      </Flex>
+    </Box>
   );
 };
 
-const SectionTitle: FC<{ title: string }> = ({ title }) => (
-  <Flex mb="12" alignItems="center" justifyContent="space-between">
-    <Box mr="12">
-      <Heading ml="0.5" as="h3" size="lg" textTransform="lowercase">
-        {title}
-      </Heading>
-      <Box
-        h="0.5"
-        mt="3"
-        maxW="24"
-        borderRadius="lg"
-        shadow="2xl"
-        background="brand.primary"
-      />
-    </Box>
-    <Categories />
-  </Flex>
-);
-
 const Home: FC = () => {
   return (
-    <>
-      {/**
-      <Box
-        p="5"
-        textAlign="center"
-        borderRadius="md"
-        borderWidth="2px"
-        background="facebook.50"
-        borderColor="facebook.100"
-      >
-        <Heading as="h2" mb="5">Olá, Bem vindo ao nosso Blog</Heading>
-        <Text>
-          Artigos diários com tutoriais e/ou dicas com 1000 formas de fazer mais
-          de 1001 coisas do nosso dia-a-dia.
-        </Text>
+    <Box p="10">
+      <HeroSlideShow />
+
+      <Box mb="8">
+        <Categories />
       </Box>
-       */}
 
-      <Grid h="400px" templateColumns={{ base: "100%", lg: "repeat(3, 1fr)" }}>
+      <ArticlesSlider title="últimos artigos" queryKey="" queryValue="" />
+
+      <ArticlesSlider title="mais populares" queryKey="" queryValue="" />
+
+      <Grid h="400px" templateColumns={{ base: "100%", lg: "repeat(10, 1fr)" }}>
         <GridItem
           py="12"
-          bg="gray.100"
-          colSpan={2}
-          pr={["8", "12"]}
-          pl={{ base: "8", md: "12", lg: "20" }}
-        >
-          <SectionTitle title="artigos recentes" />
-          <Articles />
-        </GridItem>
+          //bg="gray.100"
+          colSpan={7}
+          //pr={["8", "12"]}
+          //pl={{ base: "8", md: "12", lg: "20" }}
+        ></GridItem>
 
         <GridItem
           py="12"
-          colSpan={1}
+          colSpan={3}
           bg="gray.200"
-          pl={["8", "12"]}
-          pr={{ base: "8", md: "12", lg: "20" }}
+          pl={["6", "10"]}
+          pr={{ base: "6", md: "10", lg: "14" }}
         >
-          <Text>Artigos diários com tutoriais</Text>
+          <Categories />
         </GridItem>
       </Grid>
-    </>
+    </Box>
   );
 };
 

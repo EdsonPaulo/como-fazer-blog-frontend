@@ -1,12 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 
-import { Footer, Header } from "../../components";
+import { Header } from "../../components";
 import Routes from "../../routes";
 
 const App: React.FC = () => {
   return (
-    <Box backgroundColor="gray.50" minHeight="100vh">
+    <Box backgroundColor="gray.100" minHeight="100vh">
       <header>
         <Header />
       </header>
@@ -14,10 +14,6 @@ const App: React.FC = () => {
       <Box maxW="100%">
         <Routes />
       </Box>
-
-      <footer>
-        <Footer />
-      </footer>
     </Box>
   );
 };
