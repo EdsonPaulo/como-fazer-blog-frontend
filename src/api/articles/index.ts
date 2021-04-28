@@ -4,8 +4,11 @@ import api from "../index";
 import {
   TFetchArticleBySlug,
   TFetchArticles,
-  TCommentArticle,
+  TPatchCommentArticle,
   TViewArticle,
+  TPostCreateArticle,
+  TDeleteArticle,
+  TPutUpdateArticle,
 } from "./articles.types";
 
 export const fetchArticles: TFetchArticles = ({ query = {} }) =>
@@ -19,5 +22,17 @@ export const fetchArticleBySlug: TFetchArticleBySlug = ({ slug }) =>
 export const viewArticle: TViewArticle = ({ slug }) =>
   api.patch(`/${APIEndpoints.Articles}/${APIEndpoints.View}/${slug}`);
 
-export const commentArticle: TCommentArticle = ({ slug, comment }) =>
-  api.patch(`/${APIEndpoints.Articles}/${APIEndpoints.Comment}/${slug}`, comment);
+export const patchCommentArticle: TPatchCommentArticle = ({ slug, comment }) =>
+  api.patch(
+    `/${APIEndpoints.Articles}/${APIEndpoints.Comment}/${slug}`,
+    comment
+  );
+
+export const postCreateArticle: TPostCreateArticle = ({ article }) =>
+  api.post(`/${APIEndpoints.Articles}`, article);
+
+export const putUpdateArticle: TPutUpdateArticle = ({ article }) =>
+  api.put(`/${APIEndpoints.Articles}`, article);
+
+export const deleteArticle: TDeleteArticle = ({ _id }) =>
+  api.delete(`/${APIEndpoints.Articles}/${_id}`);
