@@ -3,12 +3,11 @@ import { Box, Flex, Heading } from "@chakra-ui/react";
 
 const Footer: React.FC = () => {
   return (
-    <Box>
+    <Box minH="200px" bg="gray.700">
       <Flex
         px={6}
         py={4}
-        bg="gray.700"
-        shadow="base"
+        minH="100%"
         alignItems="center"
         justifyContent="space-between"
         color="whiteAlpha.500"

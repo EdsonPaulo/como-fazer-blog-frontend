@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const isAdmin = pathname.includes("admin");
 
   return (
-    <Box backgroundColor="white" minHeight="100vh">
+    <Box backgroundColor="whiteAlpha.200" minHeight="100vh">
       {!isAdmin && (
         <header>
           <Header />
@@ -23,7 +23,7 @@ const App: React.FC = () => {
           <AdminRoutes />
         ) : (
           <Box py="6" px={{ base: "4", md: "10", lg: "16" }}>
-            <Routes />/
+            <Routes />
           </Box>
         )}
       </Box>
