@@ -31,7 +31,7 @@ const ArticlesList: FC<ArticlesListProps> = ({ title }) => {
   const paginate = useCallback(() => {
     if (articles.length > 0) {
       setArticlesToDisplay(
-        articles.slice((articlesPage - 1) * 6, 6 * articlesPage)
+        articles.slice((articlesPage - 1) * 4, 4 * articlesPage)
       );
     }
   }, [articles, articlesPage]);
@@ -56,21 +56,24 @@ const ArticlesList: FC<ArticlesListProps> = ({ title }) => {
       ) : (
         <>
           <SectionTitle title={title} />
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 2, xl: 3 }} spacing={6}>
+          <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={{base: 6, md: 2}}>
             {articlesToDisplay.map((article, index) => (
-              <Box key={index} w="100%" h="100%" height="400px">
+              <Box
+                key={index}
+                w={{ base: "100%", md: "320px" }}
+                minH={{ base: "380px", md: "400px", xl: "420px" }}
+                maxH={{ base: "380px", md: "400px", xl: "420px" }}
+              >
                 <ArticleCard key={article._id} article={article} />
               </Box>
             ))}
           </SimpleGrid>
-          {articles.length > 6 && (
-            <Flex mt="4" justifyContent="center">
-              <Pagination
-                count={articles.length}
-                onChange={(value) => setArticlesPage(value)}
-              />
-            </Flex>
-          )}
+          <Flex mt="6" justifyContent="center">
+            <Pagination
+              count={articles.length}
+              onChange={(value) => setArticlesPage(value)}
+            />
+          </Flex>
         </>
       )}
     </Box>

@@ -10,6 +10,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Heading,
 } from "@chakra-ui/react";
 import { FC } from "react";
 import {
@@ -36,9 +37,11 @@ import ROUTES from "../../constants/routes";
 import { ArticleCategories } from "../../typescript/enums";
 
 import { NavigationBarProps, TDrawerPlacementMode } from "./header.types";
+import { useArticlesContext } from "src/contexts/articles";
 
 const NavigationBar: FC<NavigationBarProps> = ({ navigationDirection }) => {
   const { pathname } = useLocation();
+  const { selectedCategory, setSelectedCategory } = useArticlesContext();
 
   const getColorNavigationStateBased = (route: string) =>
     route === pathname ? "brand.accent" : "blackAlpha.700";
@@ -51,70 +54,74 @@ const NavigationBar: FC<NavigationBarProps> = ({ navigationDirection }) => {
       flexDirection={navigationDirection || { base: "column", md: "row" }}
     >
       <Link as={RouterLink} to={ROUTES.Home}>
-        <Button
-          size="md"
-          variant="ghost"
-          fontSize="larger"
+        <Heading
+          fontSize="2xl"
           letterSpacing="wider"
+          _hover={{ color: "brand.accent" }}
           color={getColorNavigationStateBased(ROUTES.Home)}
         >
           Início
-        </Button>
+        </Heading>
       </Link>
 
       <Menu>
         <MenuButton
-          as={Button}
-          ml="4"
-          size="md"
-          variant="ghost"
-          fontSize="larger"
+          as={Heading}
+          ml="6"
+          fontSize="2xl"
           letterSpacing="wider"
-          rightIcon={<IoChevronDown size={20} />}
+          _hover={{ color: "brand.accent", cursor: "pointer" }}
+          rightIcon={<IoChevronDown size={20} color="#121212" />}
         >
           Categorias
         </MenuButton>
-        <MenuList>
+        <MenuList zIndex={99999}>
           {Object.values(ArticleCategories).map((category, index) => (
-            <MenuItem key={index} textTransform="capitalize">{category}</MenuItem>
+            <MenuItem
+              key={index}
+              background={
+                selectedCategory === category ? "gray.300" : "transparent"
+              }
+              textTransform="capitalize"
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </MenuItem>
           ))}
         </MenuList>
       </Menu>
 
-      <Link mx="4" as={RouterLink} to={ROUTES.Services}>
-        <Button
-          size="md"
-          variant="ghost"
-          fontSize="larger"
+      <Link mx="8" as={RouterLink} to={ROUTES.Services}>
+        <Heading
+          fontSize="2xl"
           letterSpacing="wider"
+          _hover={{ color: "brand.accent" }}
           color={getColorNavigationStateBased(ROUTES.Services)}
         >
           Serviços
-        </Button>
+        </Heading>
       </Link>
 
       <Link as={RouterLink} to={ROUTES.Contact}>
-        <Button
-          size="md"
-          variant="ghost"
-          fontSize="larger"
+        <Heading
+          fontSize="2xl"
           letterSpacing="wider"
+          _hover={{ color: "brand.accent" }}
           color={getColorNavigationStateBased(ROUTES.Contact)}
         >
           Contato
-        </Button>
+        </Heading>
       </Link>
 
-      <Link ml="4" as={RouterLink} to={ROUTES.About}>
-        <Button
-          size="md"
-          variant="ghost"
-          fontSize="larger"
+      <Link ml="8" as={RouterLink} to={ROUTES.About}>
+        <Heading
+          fontSize="2xl"
           letterSpacing="wider"
+          _hover={{ color: "brand.accent" }}
           color={getColorNavigationStateBased(ROUTES.About)}
         >
-          Sobre
-        </Button>
+          Sobre Nós
+        </Heading>
       </Link>
     </Flex>
   );
@@ -225,15 +232,16 @@ const Header: FC = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <nav>
+    <nav >
       <Flex
-        px={{ base: "6", md: "12" }}
+        px={{ base: "6", md: "12", lg: "24" }}
         py="6"
         bg="white"
-        shadow="xs"
+        shadow="sm"
+        position="sticky"
         flexDirection="column"
         color="blackAlpha.900"
-      >
+              >
         <Flex mb={[0, 6]} alignItems="center" justifyContent="space-between">
           <DrawerMenu />
 

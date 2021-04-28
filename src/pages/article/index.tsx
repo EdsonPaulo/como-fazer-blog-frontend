@@ -78,7 +78,7 @@ const Article: FC = () => {
   }, [article, getArticle]);
 
   return (
-    <>
+    <Container maxW="container.xl">
       {loading && !article ? (
         <Center
           minH="100%"
@@ -222,7 +222,7 @@ const Article: FC = () => {
           </Box>
         )
       )}
-    </>
+    </Container>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Box, Badge, Text, Image, Flex, Link } from "@chakra-ui/react";
+import { Box, Badge, Text, Image, Flex, Link, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import moment from "moment";
@@ -17,7 +17,7 @@ const ArticleCard: React.FC<{ article: IArticle }> = ({ article }) => {
       }}
     >
       <Flex
-        flexGrow={1}
+        flex={1}
         flexDirection="column"
         background="white"
         borderWidth="2px"
@@ -27,43 +27,56 @@ const ArticleCard: React.FC<{ article: IArticle }> = ({ article }) => {
         _hover={{ shadow: "xl" }}
         h="100%"
         w="100%"
+        maxH="100%"
+        maxW="100%"
       >
         <Image
-          flexGrow={1}
+          flex={1}
           src={article.image}
           alt={article.title}
           minW="100%"
           minH="50%"
+          maxH="50%"
         />
 
-        <Box p="5" flexGrow={1}>
-          <Flex alignItems="center">
-            <Badge
-              p="2"
-              borderRadius="md"
-              fontSize="small"
-              textTransform="uppercase"
-              colorScheme="facebook"
-              fontWeight="semibold"
-              letterSpacing="wide"
-            >
-              {article.category}
-            </Badge>
-          </Flex>
+        <Flex
+          justifyContent="space-between"
+          flexDirection="column"
+          p="5"
+          flex={1}
+        >
+          <Box>
+            <Box>
+              <Badge
+                p="2"
+                borderRadius="md"
+                fontSize="small"
+                textTransform="uppercase"
+                colorScheme="facebook"
+                fontWeight="semibold"
+                letterSpacing="wide"
+              >
+                {article.category}
+              </Badge>
+            </Box>
 
-          <Text
-            my="2"
-            as="title"
-            noOfLines={2}
-            lineHeight="tight"
-            fontWeight="semibold"
-          >
-            {article.title}
-          </Text>
-
-          <Text as="body" textAlign="justify" noOfLines={2}>
-            {article.body}
-          </Text>
+            <Box>
+              <Heading
+                my="2"
+                as="title"
+                noOfLines={1}
+                lineHeight="tight"
+                fontSize="lg"
+              >
+                {article.title}
+              </Heading>
+            </Box>
+            <Box>
+              <Text as="body" textAlign="justify" noOfLines={2}>
+                {article.body}
+              </Text>
+            </Box>
+          </Box>
 
           <Flex
             mt="4"
@@ -90,7 +103,7 @@ const ArticleCard: React.FC<{ article: IArticle }> = ({ article }) => {
               </Text>
             </Flex>
           </Flex>
-        </Box>
+        </Flex>
       </Flex>
     </Link>
   );

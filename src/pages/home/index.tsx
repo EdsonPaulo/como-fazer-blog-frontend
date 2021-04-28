@@ -15,7 +15,7 @@ const Home: FC = () => {
           <ArticlesList title="últimos artigos" />
         </Box>
 
-        <Box py="12" flex={{ base: "1", md: "2", xl: "3" }}>
+        <Box pt={{base: "0", md: "0", lg: "36" }} flex={{ base: "1",   md: "1",  lg: "1",  xl: "3" }}>
           <Categories />
         </Box>
       </Flex>

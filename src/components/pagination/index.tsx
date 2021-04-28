@@ -43,7 +43,12 @@ const Pagination: FC<PaginationProps> = ({ count = 1, onChange }) => {
           {value}
         </Button>
       ))}
-      <Button size="sm" onClick={nextPage} variant="ghost">
+      <Button
+        size="sm"
+        onClick={nextPage}
+        variant="ghost"
+        disabled={currentPage === values.length}
+      >
         Seguinte
       </Button>
     </Flex>
