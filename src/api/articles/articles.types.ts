@@ -12,7 +12,7 @@ export type TFetchArticleBySlug = (payload: {
   [Shared.Slug]: string;
 }) => Promise<AxiosResponse<IArticle>>;
 
-export type TLikeArticle = (payload: {
+export type TViewArticle = (payload: {
   [Shared.Slug]: string;
 }) => Promise<AxiosResponse>;
 

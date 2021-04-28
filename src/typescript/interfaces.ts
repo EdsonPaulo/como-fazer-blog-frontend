@@ -16,7 +16,7 @@ export interface IArticle {
   [Shared.Category]: ArticleCategories;
   [Shared.Comments]: IComment[];
   [Shared.Tags]: string[];
-  [Shared.Likes]: number;
+  [Shared.Views]: number;
   [Shared.CreatedAt]: Date;
   [Shared.UpdatedAt]: Date;
 }

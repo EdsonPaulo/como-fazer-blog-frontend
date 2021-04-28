@@ -1,3 +1,6 @@
 export { default as Header } from "./header";
 export { default as Footer } from "./footer";
 export { default as ArticleCard } from "./card/article";
+export { default as PageBreadcumb } from "./page-bradcumb";
+export { default as Pagination } from "./pagination";
+

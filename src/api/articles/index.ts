@@ -5,7 +5,7 @@ import {
   TFetchArticleBySlug,
   TFetchArticles,
   TCommentArticle,
-  TLikeArticle,
+  TViewArticle,
 } from "./articles.types";
 
 export const fetchArticles: TFetchArticles = ({ query = {} }) =>
@@ -16,8 +16,8 @@ export const fetchArticles: TFetchArticles = ({ query = {} }) =>
 export const fetchArticleBySlug: TFetchArticleBySlug = ({ slug }) =>
   api.get(`/${APIEndpoints.Articles}/${Shared.Slug}/${slug}`);
 
-export const likeArticle: TLikeArticle = ({ slug }) =>
-  api.patch(`/${APIEndpoints.Articles}/${APIEndpoints.Like}/${slug}`);
+export const viewArticle: TViewArticle = ({ slug }) =>
+  api.patch(`/${APIEndpoints.Articles}/${APIEndpoints.View}/${slug}`);
 
 export const commentArticle: TCommentArticle = ({ slug, comment }) =>
   api.patch(`/${APIEndpoints.Articles}/${APIEndpoints.Comment}/${slug}`, comment);

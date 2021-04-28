@@ -75,8 +75,8 @@ const NavigationBar: FC<NavigationBarProps> = ({ navigationDirection }) => {
           Categorias
         </MenuButton>
         <MenuList>
-          {Object.values(ArticleCategories).map((category) => (
-            <MenuItem textTransform="capitalize">{category}</MenuItem>
+          {Object.values(ArticleCategories).map((category, index) => (
+            <MenuItem key={index} textTransform="capitalize">{category}</MenuItem>
           ))}
         </MenuList>
       </Menu>
@@ -230,7 +230,7 @@ const Header: FC = () => {
         px={{ base: "6", md: "12" }}
         py="6"
         bg="white"
-        shadow="lg"
+        shadow="xs"
         flexDirection="column"
         color="blackAlpha.900"
       >

@@ -36,7 +36,7 @@ export enum Shared {
   Comments = "comments",
   Comment = "comment",
   Name = "name",
-  Likes = "likes",
+  Views = "views",
   Username = "username",
   Email = "email",
   CreatedAt = "createdAt",
@@ -55,7 +55,7 @@ export enum APIKeys {
 }
 
 export enum APIEndpoints {
-  Like = "like",
+  View = "view",
   Comment = "comment",
   Articles = "articles",
 }
