@@ -1,23 +1,36 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 import { Footer, Header } from "../../components";
-import Routes from "../../routes";
+import { Routes, AdminRoutes } from "../../routes";
 
 const App: React.FC = () => {
-  return (
-    <Box backgroundColor="gray.50" minHeight="100vh">
-      <header>
-        <Header />
-      </header>
+  const { pathname } = useLocation();
 
-      <Box maxW="100%">
-        <Routes />
+  const isAdmin = pathname.includes("admin");
+
+  return (
+    <Box backgroundColor="whiteAlpha.200" minHeight="100vh">
+      {!isAdmin && (
+        <header>
+          <Header />
+        </header>
+      )}
+
+      <Box minW="100%" minH="100vh">
+        {isAdmin ? (
+          <AdminRoutes />
+        ) : (
+          <Box py="6" px={{ base: "4", md: "10", lg: "16" }}>
+            <Routes />
+          </Box>
+        )}
       </Box>
 
-      <footer>
+      <header>
         <Footer />
-      </footer>
+      </header>
     </Box>
   );
 };

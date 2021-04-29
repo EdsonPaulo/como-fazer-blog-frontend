@@ -4,18 +4,22 @@ import "@fontsource/cairo";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import "moment/locale/pt-br";
 
 import CustomTheme from "./constants/custom.theme";
 import { App } from "./pages";
 import reportWebVitals from "./reportWebVitals";
 import "./styles/globals.scss";
+import { ArticlesContextProvider } from "./contexts/articles";
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={CustomTheme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ArticlesContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ArticlesContextProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")

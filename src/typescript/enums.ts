@@ -12,19 +12,13 @@ export enum ArticleCategories {
   Internet = "internet",
   Educacao = "educação",
   Social = "social",
-  Comunicacao = "comunicação",
-  Informatica = "informática",
   Relacionamento = "relacionamento",
-  Animais = "animais",
-  Desporto = "desporto",
-  Juventude = "juventude",
+  Hobby = "hobby",
   Filosofia = "filosofia",
   Religiao = "religião",
   Culinaria = "culinária",
   Estilo = "estilo",
-  Artesanato = "artesanato",
   SemCategoria = "sem categoria",
-  DesenvolvimentoPessoal = "desenvolvimento pessoal",
 }
 
 export enum Shared {
@@ -37,9 +31,12 @@ export enum Shared {
   Body = "body",
   Image = "image",
   Categories = "categories",
+  Tags = "tags",
   Category = "category",
   Comments = "comments",
+  Comment = "comment",
   Name = "name",
+  Views = "views",
   Username = "username",
   Email = "email",
   CreatedAt = "createdAt",
@@ -55,6 +52,12 @@ export enum APIKeys {
   Next = "next",
   Prev = "prev",
   TotalPages = "totalPages",
+}
+
+export enum APIEndpoints {
+  View = "view",
+  Comment = "comment",
+  Articles = "articles",
 }
 
 export enum EnvKeys {
