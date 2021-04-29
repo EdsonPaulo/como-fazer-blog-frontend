@@ -31,7 +31,7 @@ const ArticlesList: FC<ArticlesListProps> = ({ title }) => {
   const paginate = useCallback(() => {
     if (articles.length > 0) {
       setArticlesToDisplay(
-        articles.slice((articlesPage - 1) * 4, 4 * articlesPage)
+        articles.slice((articlesPage - 1) * 6, 6 * articlesPage)
       );
     }
   }, [articles, articlesPage]);

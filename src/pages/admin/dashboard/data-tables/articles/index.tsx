@@ -65,6 +65,11 @@ const ArticlesDataTable: React.FC = () => {
     try {
       await putUpdateArticle({ article });
       onClose();
+      toast({
+        title: "Artigo alerado com sucesso!",
+        status: "success",
+        duration: 4000,
+      });
       getArticles();
     } catch (error) {
       toast({
@@ -83,6 +88,11 @@ const ArticlesDataTable: React.FC = () => {
     try {
       await postCreateArticle({ article });
       onClose();
+      toast({
+        title: "Artigo Criado com sucesso!",
+        status: "success",
+        duration: 4000,
+      });
       getArticles();
     } catch (error) {
       toast({
@@ -103,6 +113,11 @@ const ArticlesDataTable: React.FC = () => {
     try {
       await deleteArticle({ _id: article._id });
       onClose();
+      toast({
+        title: "Artigo eliminado com sucesso!",
+        status: "success",
+        duration: 4000,
+      });
     } catch (error) {
       toast({
         title: error?.message,
@@ -183,12 +198,12 @@ const ArticlesDataTable: React.FC = () => {
             <FormControl isInvalid={!!errors.image?.message}>
               <FormLabel htmlFor={Shared.Image}>URL da imagem</FormLabel>
               <Input
-                id={Shared.Title}
-                {...register("title")}
+                id={Shared.Image}
+                {...register("image")}
                 placeholder="https://"
                 value={selectedArticle?.image}
               />
-              <FormErrorMessage>{errors.title?.message}</FormErrorMessage>
+              <FormErrorMessage>{errors.image?.message}</FormErrorMessage>
             </FormControl>
 
             <FormControl isRequired isInvalid={!!errors.body?.message}>
